@@ -10,7 +10,7 @@ function getIngredients(ingredients) {
   for (const ingredient of ingredients) {
     ingredientName = document.createElement('p');
     ingredientName.setAttribute('data-ingredient', ingredient.ingredient);
-    if (ingredient.unit === '' || ingredient.unit== null) {
+    if (ingredient.unit === '' || ingredient.unit == null) {
       if (ingredient.quantity) {
         ingredientName.innerHTML = `<strong>${ingredient.ingredient} :</strong> ${ingredient.quantity}`;
       } else {
