@@ -7,13 +7,13 @@ function getSearchIngredients() {
   const cards = document.querySelectorAll('.filter__ingredients--items');
   const searchQuery = document.getElementById('ingredients-input').value;
 
-  cards.forEach((card) => {
+  for (const card of cards) {
     if (card.innerText.toLowerCase().includes(searchQuery.toLowerCase())) {
       card.classList.remove('is-hidden');
     } else {
       card.classList.add('is-hidden');
     }
-  });
+  }
   console.log('11 - Fonction de recherche de nos ingrédients dans le filtre');
   return (filterRender);
 }
@@ -38,13 +38,13 @@ function getSearchAppliances() {
   const cards = document.querySelectorAll('.filter__appliances--items');
   const searchQuery = document.getElementById('appliances-input').value;
 
-  cards.forEach((card) => {
+  for (const card of cards) {
     if (card.innerText.toLowerCase().includes(searchQuery.toLowerCase())) {
       card.classList.remove('is-hidden');
     } else {
       card.classList.add('is-hidden');
     }
-  });
+  }
   console.log(' 12 - Fonction de recherche de nos appareils dans le filtre');
   return (filterRender);
 }
@@ -69,13 +69,13 @@ function getSearchUstensils() {
   const cards = document.querySelectorAll('.filter__ustensils--items');
   const searchQuery = document.getElementById('ustensils-input').value;
 
-  cards.forEach((card) => {
+  for (const card of cards) {
     if (card.innerText.toLowerCase().includes(searchQuery.toLowerCase())) {
       card.classList.remove('is-hidden');
     } else {
       card.classList.add('is-hidden');
     }
-  });
+  }
   console.log('13 - Fonction de recherche de nos ustensils dans le filtre');
   return (filterRender);
 }

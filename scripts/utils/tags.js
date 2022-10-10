@@ -2,6 +2,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-loop-func */
 /* eslint-disable no-restricted-syntax */
+
 /*** Variables ***/
 
 /** On sélectionne les items dans chaque filtre **/
@@ -31,7 +32,8 @@ const tagUstensilWrapper = document.querySelector('.tag__ustensils--wrapper');
 function addTagFilterIngredients() {
   if (tagIngredientAlreadyAdded === false) {
     tagIngredientAlreadyAdded = true;
-    Array.from(filterItemIngredients).forEach((element) => {
+    Array.from(filterItemIngredients);
+      for (element of filterItemIngredients) {
       element.addEventListener('click', (e) => {
         const tagIngredientContainer = document.createElement('div');
         tagIngredientContainer.setAttribute('class', 'tag__ingredient');
@@ -59,7 +61,7 @@ function addTagFilterIngredients() {
         deleteTagIcon.appendChild(deleteIconImg);
         searchLive();
       });
-    });
+    }
   }
   console.log(' Création des tags pour fil.Ingredient ');
 }
@@ -70,7 +72,8 @@ function addTagFilterIngredients() {
 function addTagFilterAppliances() {
   if (tagApplianceAlreadyAdded === false) {
     tagApplianceAlreadyAdded = true;
-    Array.from(filterItemAppliances).forEach((element) => {
+    Array.from(filterItemAppliances);
+    for (element of filterItemAppliances) {
       element.addEventListener('click', (e) => {
 
         const tagApplianceContainer = document.createElement('div');
@@ -100,7 +103,7 @@ function addTagFilterAppliances() {
         // défini dans search_bar.js
         searchLive();
       });
-    });
+    }
   }
   console.log(' Création des tags pour fil.Appareil ');
 }
@@ -111,7 +114,8 @@ function addTagFilterAppliances() {
 function addTagFilterUstensils() {
   if (tagUstensilAlreadyAdded === false) {
     tagUstensilAlreadyAdded = true;
-    Array.from(filterItemUstensils).forEach((element) => {
+    Array.from(filterItemUstensils);
+    for(element of filterItemUstensils) {
       element.addEventListener('click', (e) => {
         
         const tagUstensilContainer = document.createElement('div');
@@ -141,13 +145,13 @@ function addTagFilterUstensils() {
         // défini dans search_bar.js
         searchLive();
       });
-    });
+    }
   }
   console.log(' Création des tags pour fil.Ustensil ');
 }
 
 
-/** TAG FILTRE RECIPES **/
+/** TAG FILTRE RECIPES **/  
 
 /* filteredRecipesWithTags */
 // eslint-disable-next-line no-unused-vars
@@ -155,24 +159,32 @@ function filteredRecipesWithTags(recipesToFilter) {
   console.log(recipesToFilter.length + ' recettes comprises avant les tags ');
   /* Faire des tableaux des items afficher pour chaque filtre */ 
   const taggedIngredientsDOM = Array.from(document.querySelectorAll('.tag__ingredients--wrapper .tag__ingredient .tag-blue'));
-
   const taggedAppliancesDOM = Array.from(document.querySelectorAll('.tag__appliances--wrapper .tag__appliance .tag-green'));
-
   const taggedustensilsDOM = Array.from(document.querySelectorAll('.tag__ustensils--wrapper .tag__ustensil .tag-red'));
+  console.log('tableau des tags bleu', taggedIngredientsDOM);
+
   let recipesToDisplay = [];
   let taggedIngredients = [];
   let taggedAppliances = [];
   let taggedUstensils = [];
   
-  /* Créer des tableaux avec map contenant le texte de chaque tableau */
-  taggedIngredients = taggedIngredientsDOM.map((taggedIngredient) => taggedIngredient.innerText);
-  taggedAppliances = taggedAppliancesDOM.map((taggedAppliance) => taggedAppliance.innerText);
-  taggedUstensils = taggedustensilsDOM.map((taggedUstensil) => taggedUstensil.innerText);
-  
+  /* Conversion des maps : Sortir le texte de tous nos tags utilisés */
+  for (const taggedIngredient of taggedIngredientsDOM) {
+    taggedIngredients.push(taggedIngredient.innerText)
+  }
+  for (const taggedAppliance of taggedAppliancesDOM) {
+    taggedAppliances.push(taggedAppliance.innerText)
+  }
+  for (const taggedUstensil of taggedustensilsDOM) {
+    taggedUstensils.push(taggedUstensil.innerText)
+  }
+ 
   console.log('tags utilisés :', taggedIngredients, taggedAppliances, taggedUstensils);
-  /* Définir le tableau recipesToDisplay un filtre de recipes */
+
+  /* Définir le tableau recipesToDisplay filtrer grâce aux tags des recipes */
+  
   recipesToDisplay = recipesToFilter.filter((recipe) => {
-    let recipeIsMatching = false;
+    let recipeIsMatching = false; 
     let ingredientIsMatching = false;
     let applianceIsMatching = false;
     let ustensilIsMatching = false;
@@ -185,34 +197,39 @@ function filteredRecipesWithTags(recipesToFilter) {
     let appliancesInTheRecipe = [];
     let ustensilsInTheRecipe = [];
 
-    ingredientsInTheRecipe = recipe.ingredients.map(({ ingredient }) => ingredient);
-    
+    // Remplir les tableaux vide si les tags correspondent 
+    for (const {ingredient} of recipe.ingredients) {
+      ingredientsInTheRecipe.push(ingredient);
+    }
+
     appliancesInTheRecipe.push(recipe.appliance);
     
-    ustensilsInTheRecipe = recipe.ustensils.map((ustensil) => ustensil);
+    for (const ustensil of recipe.ustensils) {
+    ustensilsInTheRecipe.push(ustensil);
+    }
 
     if(taggedIngredients.length > 0) {
-      taggedIngredients.forEach((taggedIngredient) => {
+      for (const taggedIngredient of taggedIngredients) {
         if (ingredientsInTheRecipe.includes(taggedIngredient)) {
           ingredientsMatching += 1;
         }
-      });
+      }
     }
 
     if(taggedAppliances.length > 0) {
-      taggedAppliances.forEach((taggedAppliance) => {
+      for (const taggedAppliance of taggedAppliances) {
         if (appliancesInTheRecipe.includes(taggedAppliance)) {
           appliancesMatching += 1;
         }
-      });
+      }
     }
     
     if (taggedUstensils.length > 0) {
-      taggedUstensils.forEach((taggedUstensil) => {
+      for (const taggedUstensil of taggedUstensils) {
         if (ustensilsInTheRecipe.includes(taggedUstensil)) {
           ustensilsMatching += 1;
         }
-      });
+      }
     }
 
     if (ingredientsMatching === taggedIngredients.length) {
@@ -238,5 +255,22 @@ function filteredRecipesWithTags(recipesToFilter) {
   console.log(recipesToDisplay.length + ' recettes après les tags');
   // filFilters is defined in filters-fill.js 
   fillFilters(recipesToDisplay);
-  return recipesToDisplay;
+  return recipesToDisplay;  
 }
+
+// filter => to natif.
+// const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+// const result = words.filter(word => word.length > 6);
+
+// console.log(result);
+// // expected output: Array ["exuberant", "destruction", "present"]
+
+// const result2 = [];
+// for (const word of words) {
+//   if (word.length > 6) {
+//     result2.push(word);
+//   }
+  
+// }
+// console.log(result2);

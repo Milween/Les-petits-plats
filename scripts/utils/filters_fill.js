@@ -17,24 +17,9 @@ function fillFilters(recipes) {
   appliancesBloc.innerHTML = '';
   ustensilsBloc.innerHTML = '';
 
-  // recipes.forEach((recipe) => {
-  //   /** Ingredients **/
-  //   recipe.ingredients.forEach(({ ingredient }) => {
-  //     if (ingredientsList.includes(ingredient) === false) {
-  //       ingredientsList.push(ingredient);  
-  //       const filterItem = document.createElement('li');
-  //       filterItem.classList.add('filter__ingredients--items');
-  //       filterItem.innerText = ingredient;
-  //       ingredientsBloc.appendChild(filterItem);
-  //     }
-  //   });
-  
   for (const recipe of recipes) {
-    /** Ingredients (boucle native) **/
-    // let compteur = 0;
-    // console.log(compteur++, recipe.name);
-    for (let i = 0; i < recipe.ingredients.length; i++) {
-      const ingredient = recipe.ingredients[i].ingredient;
+    /** Ingredients (boucle native : destructuré) **/
+    for (const {ingredient} of recipe.ingredients) {
       // console.log(`${ingredient}`);
       if (ingredientsList.includes(ingredient) === false) {
         ingredientsList.push(`${ingredient}`);
@@ -52,17 +37,6 @@ function fillFilters(recipes) {
       filterItem.innerText = recipe.appliance;
       appliancesBloc.appendChild(filterItem);
     }
-    //   /** ustensils **/
-    //   recipe.ustensils.forEach((ustensil) => {
-    //     if (ustensilsList.includes(ustensil) === false) {
-    //       ustensilsList.push(ustensil);
-    //       const filterItem = document.createElement('li');
-    //       filterItem.classList.add('filter__ustensils--items');
-    //       filterItem.innerText = ustensil;
-    //       ustensilsBloc.appendChild(filterItem);
-    //     } 
-    //   });
-    // };
     /** ustensils (boucle native) **/
     for (let i = 0; i < recipe.ustensils.length; i++) {
       const ustensil = recipe.ustensils[i];
@@ -152,3 +126,8 @@ function isArrowClicked() {
     }  
   });
 }
+
+// déstructuration utile.
+// const user = {name:'guillaume', age:50};
+// const {age} = user;
+// console.log(age);
