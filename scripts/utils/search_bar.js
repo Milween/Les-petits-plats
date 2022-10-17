@@ -35,7 +35,7 @@ function searchLive() {
     });
     /* Remplir les filtres avec le tableau retourné */
     fillFilters(recipesToDisplay);
-    console.log('mot recherché', mainInput + '');
+    // console.log('mot recherché', mainInput + '');
   }
   
   /* Si l'un de ses tableaux comportent un élément alors un tag est utilisé, applique donc la fonction filteredRecipesWithTags avec comme callback recipesToDisplay;
@@ -44,7 +44,7 @@ function searchLive() {
   || Array.from(document.querySelectorAll('.tag__appliances--wrapper .tag__appliance .tag-green')).length > 0
   || Array.from(document.querySelectorAll('.tag__ustensils--wrapper .tag__ustensil .tag-red')).length > 0) {
     tagsUsed = true;
-    console.log('on passe ici');
+    // console.log('on passe ici');
     if (recipesToDisplay.length > 0) {
       recipesToDisplay = filteredRecipesWithTags(recipesToDisplay);
     } else {

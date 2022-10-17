@@ -81,6 +81,6 @@ function getRecipeCard(data) {
   cardInfo.appendChild(recipeDescription);
   article.appendChild(hidden);
 
-  console.log('2 - Création des cards - recettes');
+  // console.log('2 - Création des cards - recettes');
   return (article);
 }

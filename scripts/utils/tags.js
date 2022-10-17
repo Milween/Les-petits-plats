@@ -63,7 +63,7 @@ function addTagFilterIngredients() {
       });
     }
   }
-  console.log(' Création des tags pour fil.Ingredient ');
+  // console.log(' Création des tags pour fil.Ingredient ');
 }
 
 /* Appareils */ 
@@ -105,7 +105,7 @@ function addTagFilterAppliances() {
       });
     }
   }
-  console.log(' Création des tags pour fil.Appareil ');
+  // console.log(' Création des tags pour fil.Appareil ');
 }
 
 /* Ustensils */ 
@@ -147,7 +147,7 @@ function addTagFilterUstensils() {
       });
     }
   }
-  console.log(' Création des tags pour fil.Ustensil ');
+  // console.log(' Création des tags pour fil.Ustensil ');
 }
 
 
@@ -161,7 +161,7 @@ function filteredRecipesWithTags(recipesToFilter) {
   const taggedIngredientsDOM = Array.from(document.querySelectorAll('.tag__ingredients--wrapper .tag__ingredient .tag-blue'));
   const taggedAppliancesDOM = Array.from(document.querySelectorAll('.tag__appliances--wrapper .tag__appliance .tag-green'));
   const taggedustensilsDOM = Array.from(document.querySelectorAll('.tag__ustensils--wrapper .tag__ustensil .tag-red'));
-  console.log('tableau des tags bleu', taggedIngredientsDOM);
+  // console.log('tableau des tags bleu', taggedIngredientsDOM);
 
   let recipesToDisplay = [];
   let taggedIngredients = [];
@@ -178,8 +178,6 @@ function filteredRecipesWithTags(recipesToFilter) {
   for (const taggedUstensil of taggedustensilsDOM) {
     taggedUstensils.push(taggedUstensil.innerText)
   }
- 
-  console.log('tags utilisés :', taggedIngredients, taggedAppliances, taggedUstensils);
 
   /* Définir le tableau recipesToDisplay filtrer grâce aux tags des recipes */
   
@@ -197,7 +195,7 @@ function filteredRecipesWithTags(recipesToFilter) {
     let appliancesInTheRecipe = [];
     let ustensilsInTheRecipe = [];
 
-    // Remplir les tableaux vide si les tags correspondent 
+    // Remplir les tableaux vides si les tags correspondent:
     for (const {ingredient} of recipe.ingredients) {
       ingredientsInTheRecipe.push(ingredient);
     }
@@ -252,7 +250,7 @@ function filteredRecipesWithTags(recipesToFilter) {
 
     return recipeIsMatching;
   });
-  console.log(recipesToDisplay.length + ' recettes après les tags');
+  // console.log(recipesToDisplay.length + ' recettes après les tags');
   // filFilters is defined in filters-fill.js 
   fillFilters(recipesToDisplay);
   return recipesToDisplay;  

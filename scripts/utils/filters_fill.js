@@ -20,7 +20,6 @@ function fillFilters(recipes) {
   for (const recipe of recipes) {
     /** Ingredients (boucle native : destructuré) **/
     for (const {ingredient} of recipe.ingredients) {
-      // console.log(`${ingredient}`);
       if (ingredientsList.includes(ingredient) === false) {
         ingredientsList.push(`${ingredient}`);
         const filterItem = document.createElement('li');
@@ -40,7 +39,6 @@ function fillFilters(recipes) {
     /** ustensils (boucle native) **/
     for (let i = 0; i < recipe.ustensils.length; i++) {
       const ustensil = recipe.ustensils[i];
-      // console.log(ustensil);
       if (ustensilsList.includes(ustensil) === false) {
       ustensilsList.push(ustensil);
       const filterItem = document.createElement('li');
@@ -63,7 +61,7 @@ function fillFilters(recipes) {
   tagUstensilAlreadyAdded = false;
   // eslint-disable-next-line no-undef
   addTagFilterUstensils();
-  console.log('7 - Remplir les filtres avec les données filtrer', [ingredientsList], [appliancesList], [ustensilsList]);
+  // console.log('7 - Remplir les filtres avec les données filtrer', [ingredientsList], [appliancesList], [ustensilsList]);
 }
 
 /*** Fonction pour ouvrir qu'un seul filtre à la fois. ***/

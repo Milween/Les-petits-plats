@@ -14,7 +14,7 @@ function getSearchIngredients() {
       card.classList.add('is-hidden');
     }
   }
-  console.log('11 - Fonction de recherche de nos ingrédients dans le filtre');
+  // console.log('11 - Fonction de recherche de nos ingrédients dans le filtre');
   return (filterRender);
 }
 
@@ -45,7 +45,7 @@ function getSearchAppliances() {
       card.classList.add('is-hidden');
     }
   }
-  console.log(' 12 - Fonction de recherche de nos appareils dans le filtre');
+  // console.log(' 12 - Fonction de recherche de nos appareils dans le filtre');
   return (filterRender);
 }
 
@@ -76,7 +76,7 @@ function getSearchUstensils() {
       card.classList.add('is-hidden');
     }
   }
-  console.log('13 - Fonction de recherche de nos ustensils dans le filtre');
+  // console.log('13 - Fonction de recherche de nos ustensils dans le filtre');
   return (filterRender);
 }
 
