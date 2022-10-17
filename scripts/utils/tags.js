@@ -63,7 +63,6 @@ function addTagFilterIngredients() {
       });
     }
   }
-  // console.log(' Création des tags pour fil.Ingredient ');
 }
 
 /* Appareils */ 
@@ -105,7 +104,6 @@ function addTagFilterAppliances() {
       });
     }
   }
-  // console.log(' Création des tags pour fil.Appareil ');
 }
 
 /* Ustensils */ 
@@ -147,7 +145,6 @@ function addTagFilterUstensils() {
       });
     }
   }
-  // console.log(' Création des tags pour fil.Ustensil ');
 }
 
 
@@ -156,12 +153,10 @@ function addTagFilterUstensils() {
 /* filteredRecipesWithTags */
 // eslint-disable-next-line no-unused-vars
 function filteredRecipesWithTags(recipesToFilter) {
-  console.log(recipesToFilter.length + ' recettes comprises avant les tags ');
   /* Faire des tableaux des items afficher pour chaque filtre */ 
   const taggedIngredientsDOM = Array.from(document.querySelectorAll('.tag__ingredients--wrapper .tag__ingredient .tag-blue'));
   const taggedAppliancesDOM = Array.from(document.querySelectorAll('.tag__appliances--wrapper .tag__appliance .tag-green'));
   const taggedustensilsDOM = Array.from(document.querySelectorAll('.tag__ustensils--wrapper .tag__ustensil .tag-red'));
-  // console.log('tableau des tags bleu', taggedIngredientsDOM);
 
   let recipesToDisplay = [];
   let taggedIngredients = [];
@@ -250,25 +245,7 @@ function filteredRecipesWithTags(recipesToFilter) {
 
     return recipeIsMatching;
   });
-  // console.log(recipesToDisplay.length + ' recettes après les tags');
   // filFilters is defined in filters-fill.js 
   fillFilters(recipesToDisplay);
   return recipesToDisplay;  
 }
-
-// filter => to natif.
-// const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
-
-// const result = words.filter(word => word.length > 6);
-
-// console.log(result);
-// // expected output: Array ["exuberant", "destruction", "present"]
-
-// const result2 = [];
-// for (const word of words) {
-//   if (word.length > 6) {
-//     result2.push(word);
-//   }
-  
-// }
-// console.log(result2);

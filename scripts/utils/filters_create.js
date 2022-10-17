@@ -96,7 +96,6 @@ function filterIngredients() {
   article.appendChild(inputIngredients);
   article.appendChild(ingredientsListBox);
 
-  // console.log('4 - Création du filtre Ingredients');
   return(article);
 }
 
@@ -194,7 +193,6 @@ function filterAppliances() {
   article.appendChild(inputAppliances);
   article.appendChild(appliancesListBox);
 
-  // console.log('5 - Création du filtre Appareils');
   return(article);
 }
 
@@ -291,6 +289,5 @@ function filterUstensils() {
   article.appendChild(inputUstensils);
   article.appendChild(ustensilsListBox);
 
-  // console.log('6 - Création du filtre Ustensils');
   return(article);
 }

@@ -3,7 +3,6 @@ let recipes = [];
 async function getDataJson() {
   const response = await fetch ('data/recipes.json');
   recipes = (await response.json()).recipes;
-  // console.log('1 - ExtractionJSON Recipes');
   init();
 }
 /*** Afficher les cards ***/
@@ -16,7 +15,6 @@ function displayData(recipes) {
     const recipeCard = getRecipeCard(recipe);
     recipeSection.appendChild(recipeCard);
   }
-  // console.log('3 - Afficher les Recipes :' ,recipes);
 }
 
 function init() {

@@ -19,8 +19,9 @@ function fillFilters(recipes) {
 
   for (const recipe of recipes) {
     /** Ingredients (boucle native : destructuré) **/
+    const itags = [...document.querySelectorAll('.tag__ingredient')].map( (itag) => itag.innerText);
     for (const {ingredient} of recipe.ingredients) {
-      if (ingredientsList.includes(ingredient) === false) {
+      if (ingredientsList.includes(ingredient) === false && itags.includes(ingredient) === false) {
         ingredientsList.push(`${ingredient}`);
         const filterItem = document.createElement('li');
         filterItem.classList.add('filter__ingredients--items');
@@ -29,7 +30,8 @@ function fillFilters(recipes) {
       }
     } 
     /** appliances **/
-    if (appliancesList.includes(recipe.appliance) === false) {
+    const atags = [...document.querySelectorAll('.tag__appliance')].map( (atag) => atag.innerText);
+    if (appliancesList.includes(recipe.appliance) === false && atags.includes(recipe.appliance) === false) {
       appliancesList.push(recipe.appliance);
       const filterItem = document.createElement('li');
       filterItem.classList.add('filter__appliances--items');
@@ -37,9 +39,10 @@ function fillFilters(recipes) {
       appliancesBloc.appendChild(filterItem);
     }
     /** ustensils (boucle native) **/
+    const utags = [...document.querySelectorAll('.tag__ustensil')].map( (utag) => utag.innerText)
     for (let i = 0; i < recipe.ustensils.length; i++) {
       const ustensil = recipe.ustensils[i];
-      if (ustensilsList.includes(ustensil) === false) {
+      if (ustensilsList.includes(ustensil) === false && utags.includes(ustensil) === false) {
       ustensilsList.push(ustensil);
       const filterItem = document.createElement('li');
       filterItem.classList.add('filter__ustensils--items');
@@ -61,7 +64,6 @@ function fillFilters(recipes) {
   tagUstensilAlreadyAdded = false;
   // eslint-disable-next-line no-undef
   addTagFilterUstensils();
-  // console.log('7 - Remplir les filtres avec les données filtrer', [ingredientsList], [appliancesList], [ustensilsList]);
 }
 
 /*** Fonction pour ouvrir qu'un seul filtre à la fois. ***/
@@ -124,8 +126,3 @@ function isArrowClicked() {
     }  
   });
 }
-
-// déstructuration utile.
-// const user = {name:'guillaume', age:50};
-// const {age} = user;
-// console.log(age);
